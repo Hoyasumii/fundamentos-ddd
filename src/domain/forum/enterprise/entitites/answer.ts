@@ -1,6 +1,6 @@
-import { Entity } from "@/core/entities/entity";
-import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { Optional } from "@/core/types";
+import { Entity } from "@/core/entities";
+import type { UniqueEntityId } from "@/core/entities";
+import type { Optional } from "@/core/types";
 
 interface AnswerProps {
   content: string;
@@ -50,7 +50,7 @@ export class Answer extends Entity<AnswerProps> {
         ...props,
         createdAt: new Date(),
       },
-      id
+      id,
     );
 
     return answer;

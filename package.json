@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "vitest run"
   },
@@ -11,6 +12,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.5",
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.13.10",
     "eslint": "^9.22.0",

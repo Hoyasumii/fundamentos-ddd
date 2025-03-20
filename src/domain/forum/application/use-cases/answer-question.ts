@@ -1,7 +1,7 @@
-import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { Answer } from "../entitites";
-import { AnswersRepositoryInterface } from "../repositories";
-import { Service } from "./service";
+import type { UniqueEntityId } from "@/core/entities";
+import { Answer } from "@/domain/forum/enterprise/entitites";
+import type { AnswersRepositoryInterface } from "@/domain/forum/application/repositories";
+import type { Service } from "@/core/types";
 
 interface AnswerQuestionProps {
   instructorId: UniqueEntityId;

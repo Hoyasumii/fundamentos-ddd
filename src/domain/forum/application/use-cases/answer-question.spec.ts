@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 import { AnswerQuestionService } from "./answer-question";
-import { Answer } from "../entitites";
-import { AnswersRepositoryInterface } from "../repositories";
+import type { Answer } from "@/domain/forum/enterprise/entitites";
+import type { AnswersRepositoryInterface } from "@/domain/forum/application/repositories";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 test("create an answer", async () => {
