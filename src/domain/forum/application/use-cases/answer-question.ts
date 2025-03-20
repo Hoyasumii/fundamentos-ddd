@@ -9,18 +9,20 @@ interface AnswerQuestionProps {
   content: string;
 }
 
-export class AnswerQuestionService
+export class AnswerQuestionUseCase
   implements Service<AnswersRepositoryInterface, AnswerQuestionProps, Answer>
 {
   constructor(public repository: AnswersRepositoryInterface) {}
 
   async run({ instructorId, questionId, content }: AnswerQuestionProps) {
-    const answer = new Answer({
+    const answer = Answer.create({
       content,
       questionId,
       authorId: instructorId,
       createdAt: new Date(),
     });
+
+    await this.repository.create(answer);
 
     return answer;
   }

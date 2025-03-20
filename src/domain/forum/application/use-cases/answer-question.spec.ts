@@ -1,23 +1,24 @@
-import { expect, test } from "vitest";
-import { AnswerQuestionService } from "./answer-question";
-import type { Answer } from "@/domain/forum/enterprise/entitites";
-import type { AnswersRepositoryInterface } from "@/domain/forum/application/repositories";
+import { AnswerQuestionUseCase } from "./answer-question";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
+import { AnswersRepository } from "~/test/repositories";
 
-test("create an answer", async () => {
-  const fakeAnswersRepository: AnswersRepositoryInterface = {
-    create: async (_: Answer) => {
-      return;
-    },
-  };
+let repo: AnswersRepository;
+let sut: AnswerQuestionUseCase;
 
-  const answerQuestion = new AnswerQuestionService(fakeAnswersRepository);
-
-  const answer = await answerQuestion.run({
-    questionId: new UniqueEntityId("1"),
-    instructorId: new UniqueEntityId("1"),
-    content: "Nova resposta",
+describe("Answer a Question Suite", () => {
+  beforeEach(() => {
+    repo = new AnswersRepository();
+    sut = new AnswerQuestionUseCase(repo);
   });
 
-  expect(answer.content).toEqual("Nova resposta");
+  it("should create an answer", async () => {
+    const answer = await sut.run({
+      questionId: new UniqueEntityId("1"),
+      instructorId: new UniqueEntityId("1"),
+      content: "Nova resposta",
+    });
+
+    expect(answer.content).toEqual("Nova resposta");
+    expect(repo.items.length).toBe(1);
+  });
 });
