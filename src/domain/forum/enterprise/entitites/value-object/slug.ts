@@ -10,6 +10,16 @@ export class Slug {
   }
 
   /**
+   * Creates a new Slug instance from a given string value.
+   * @param {string} value - The string value to be used for the Slug.
+   * @returns {Slug} A new Slug instance with the specified value.
+   */
+
+  static create(value: string) {
+    return new Slug(value)
+  }
+
+  /**
    * Creates a Slug from a given text. The text is normalized to Unicode
    * NFKD, lowercased, trimmed, and then has any whitespace replaced with
    * dashes. Additionally, any non-word characters (except dashes) are
