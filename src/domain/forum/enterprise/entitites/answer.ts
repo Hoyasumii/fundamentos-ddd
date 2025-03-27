@@ -44,7 +44,7 @@ export class Answer extends Entity<AnswerProps> {
     this.touch();
   }
 
-  static create(props: Optional<AnswerProps, "createdAt">, id?: string) {
+  static create(props: Optional<AnswerProps, "createdAt">, id?: UniqueEntityId) {
     const answer = new Answer(
       {
         ...props,

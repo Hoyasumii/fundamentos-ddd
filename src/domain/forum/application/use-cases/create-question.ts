@@ -1,6 +1,6 @@
 import { UniqueEntityId } from "@/core/entities";
 import { Question } from "@/domain/forum/enterprise/entitites";
-import type { AnswersRepositoryInterface } from "@/domain/forum/application/repositories";
+import type { QuestionsRepositoryInterface } from "@/domain/forum/application/repositories";
 import type { Service } from "@/core/types";
 
 interface CreateQuestionProps {
@@ -12,12 +12,12 @@ interface CreateQuestionProps {
 export class CreateQuestionUseCase
   implements
     Service<
-      AnswersRepositoryInterface,
+      QuestionsRepositoryInterface,
       CreateQuestionProps,
       { question: Question }
     >
 {
-  constructor(public repository: AnswersRepositoryInterface) {}
+  constructor(public repository: QuestionsRepositoryInterface) {}
 
   async run({ authorId, content, title }: CreateQuestionProps) {
     const question = Question.create({
